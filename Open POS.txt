@@ -1,1 +1,3 @@
 Any idea about its license type
+
+Auto renewal of License ?
