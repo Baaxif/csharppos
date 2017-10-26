@@ -1,0 +1,1297 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="cposModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="cposModelStoreContainer">
+          <EntitySet Name="Category" EntityType="cposModel.Store.Category" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Customer" EntityType="cposModel.Store.Customer" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DailySales" EntityType="cposModel.Store.DailySales" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Department" EntityType="cposModel.Store.Department" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Employee" EntityType="cposModel.Store.Employee" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Item" EntityType="cposModel.Store.Item" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Kit" EntityType="cposModel.Store.Kit" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="KitEntry" EntityType="cposModel.Store.KitEntry" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Permission" EntityType="cposModel.Store.Permission" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Role" EntityType="cposModel.Store.Role" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RolePermissionMap" EntityType="cposModel.Store.RolePermissionMap" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Store" EntityType="cposModel.Store.Store" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Supplier" EntityType="cposModel.Store.Supplier" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SupplierList" EntityType="cposModel.Store.SupplierList" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Transaction" EntityType="cposModel.Store.Transaction" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TransactionDetail" EntityType="cposModel.Store.TransactionDetail" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="User" EntityType="cposModel.Store.User" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Category_Department" Association="cposModel.Store.FK_Category_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Category" EntitySet="Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Category" Association="cposModel.Store.FK_Item_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Item" EntitySet="Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Department" Association="cposModel.Store.FK_Item_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Item" EntitySet="Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kit_Item" Association="cposModel.Store.FK_Kit_Item">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="Kit" EntitySet="Kit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KitEntry_Kit" Association="cposModel.Store.FK_KitEntry_Kit">
+            <End Role="Kit" EntitySet="Kit" />
+            <End Role="KitEntry" EntitySet="KitEntry" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RolePermissionMap_Permission" Association="cposModel.Store.FK_RolePermissionMap_Permission">
+            <End Role="Permission" EntitySet="Permission" />
+            <End Role="RolePermissionMap" EntitySet="RolePermissionMap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RolePermissionMap_Role" Association="cposModel.Store.FK_RolePermissionMap_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="RolePermissionMap" EntitySet="RolePermissionMap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplierList_Item" Association="cposModel.Store.FK_SupplierList_Item">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="SupplierList" EntitySet="SupplierList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplierList_Supplier" Association="cposModel.Store.FK_SupplierList_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="SupplierList" EntitySet="SupplierList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transaction_Customer" Association="cposModel.Store.FK_Transaction_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Transaction" EntitySet="Transaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransactionDetail_Item" Association="cposModel.Store.FK_TransactionDetail_Item">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="TransactionDetail" EntitySet="TransactionDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransactionDetail_Transaction" Association="cposModel.Store.FK_TransactionDetail_Transaction">
+            <End Role="Transaction" EntitySet="Transaction" />
+            <End Role="TransactionDetail" EntitySet="TransactionDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Employee" Association="cposModel.Store.FK_User_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="cposModel.Store.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="45" />
+          <Property Name="Description" Type="varchar" MaxLength="255" />
+          <Property Name="DepartmentID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="LastUpdate" Type="date" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AccountNumber" Type="int" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Company" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="130" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="32" />
+          <Property Name="FaxNumber" Type="nvarchar" MaxLength="32" />
+          <Property Name="Address1" Type="nvarchar" MaxLength="65" />
+          <Property Name="Address2" Type="nvarchar" MaxLength="65" />
+          <Property Name="City" Type="nvarchar" MaxLength="65" />
+          <Property Name="State" Type="nvarchar" MaxLength="65" />
+          <Property Name="ZipCode" Type="nvarchar" MaxLength="16" />
+          <Property Name="Country" Type="nvarchar" MaxLength="130" />
+          <Property Name="PriceLevel" Type="smallint" />
+          <Property Name="Discount" Type="float" />
+          <Property Name="CreditLimit" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="AccountBalance" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="TotalSales" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="AllowCredit" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="LastVisitDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="DailySales">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Total" Type="decimal" Precision="12" Scale="2" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" MaxLength="45" />
+          <Property Name="Description" Type="varchar" MaxLength="255" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="LastUpdated" Type="date" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="LastUpdate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="30" />
+          <Property Name="BuyPrice" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="SellPrice" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="Description" Type="varchar" MaxLength="255" />
+          <Property Name="FoodStampable" Type="bit" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="DateUpdated" Type="datetime" />
+          <Property Name="LastReceived" Type="datetime" />
+          <Property Name="Image" Type="image" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="Barcode" Type="varchar" MaxLength="45" />
+          <Property Name="Reference" Type="int" />
+          <Property Name="Weight" Type="float" />
+          <Property Name="Weighed" Type="bit" Nullable="false" />
+          <Property Name="PrefferredSupplierID" Type="int" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="DepartmentID" Type="int" />
+          <Property Name="Discountable" Type="bit" />
+          <Property Name="SalePrice" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="DiscountPercent" Type="float" />
+          <Property Name="SaleStartDate" Type="date" />
+          <Property Name="SaleEndDate" Type="date" />
+          <Property Name="OnSale" Type="bit" Nullable="false" />
+          <Property Name="TaxID" Type="int" />
+          <Property Name="Taxable" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kit">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ItemID" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="float" />
+          <Property Name="Price" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="Description" Type="nvarchar" MaxLength="255" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="LastUpdated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="KitEntry">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="KitID" Type="int" />
+          <Property Name="Cost" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="Price" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="Quantity" Type="float" />
+        </EntityType>
+        <EntityType Name="Permission">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="255" />
+          <Property Name="Value" Type="nvarchar" Nullable="false" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="Permission" Type="ntext" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RolePermissionMap">
+          <Key>
+            <PropertyRef Name="RoleID" />
+            <PropertyRef Name="PermissionID" />
+          </Key>
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="PermissionID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Store">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="StoreNumber" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="130" />
+          <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="Address1" Type="nvarchar" Nullable="false" MaxLength="130" />
+          <Property Name="Address2" Type="nvarchar" Nullable="false" MaxLength="130" />
+          <Property Name="City" Type="nvarchar" Nullable="false" MaxLength="65" />
+          <Property Name="State" Type="nvarchar" MaxLength="65" />
+          <Property Name="ZipCode" Type="nvarchar" Nullable="false" MaxLength="16" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdates" Type="datetime" Nullable="false" />
+          <Property Name="PhoneNumber" Type="nvarchar" Nullable="false" MaxLength="32" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="130" />
+          <Property Name="WebPage" Type="nvarchar" MaxLength="130" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="City" Type="nvarchar" Nullable="false" MaxLength="65" />
+          <Property Name="State" Type="nvarchar" MaxLength="65" />
+          <Property Name="Address1" Type="nvarchar" Nullable="false" MaxLength="65" />
+          <Property Name="Address2" Type="nvarchar" Nullable="false" MaxLength="65" />
+          <Property Name="ZipCode" Type="nvarchar" Nullable="false" MaxLength="16" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="130" />
+          <Property Name="WebPageAddress" Type="nvarchar" MaxLength="130" />
+          <Property Name="SupplierCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="Country" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="TaxNumber" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="PhoneNumber" Type="nvarchar" Nullable="false" MaxLength="32" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="128" />
+          <Property Name="FaxNumber" Type="nvarchar" Nullable="false" MaxLength="32" />
+          <Property Name="Notes" Type="ntext" />
+          <Property Name="MinimumOrderAmmount" Type="decimal" Nullable="false" Precision="12" Scale="2" />
+        </EntityType>
+        <EntityType Name="SupplierList">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SupplierID" Type="int" Nullable="false" />
+          <Property Name="ItemID" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="LastUpdate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Transaction">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="CustomerID" Type="int" />
+          <Property Name="Total" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="SalesTax" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="EmployeeID" Type="int" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="255" />
+          <Property Name="CreatedTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TransactionDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Cost" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="SalePrice" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="TransactionID" Type="int" />
+          <Property Name="ItemID" Type="int" />
+          <Property Name="Quantity" Type="float" />
+          <Property Name="Taxable" Type="bit" />
+          <Property Name="SalesTax" Type="decimal" Precision="12" Scale="2" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastLogin" Type="datetime" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="255" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telephone" Type="nvarchar" MaxLength="30" />
+          <Property Name="PasswordReset" Type="bit" />
+          <Property Name="Address1" Type="nvarchar" MaxLength="130" />
+          <Property Name="Address2" Type="nvarchar" MaxLength="130" />
+          <Property Name="RoleID" Type="int" />
+        </EntityType>
+        <Association Name="FK_Category_Department">
+          <End Role="Department" Type="cposModel.Store.Department" Multiplicity="1" />
+          <End Role="Category" Type="cposModel.Store.Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Category">
+              <PropertyRef Name="DepartmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Category">
+          <End Role="Category" Type="cposModel.Store.Category" Multiplicity="1" />
+          <End Role="Item" Type="cposModel.Store.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Department">
+          <End Role="Department" Type="cposModel.Store.Department" Multiplicity="0..1" />
+          <End Role="Item" Type="cposModel.Store.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="DepartmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kit_Item">
+          <End Role="Item" Type="cposModel.Store.Item" Multiplicity="1" />
+          <End Role="Kit" Type="cposModel.Store.Kit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Kit">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KitEntry_Kit">
+          <End Role="Kit" Type="cposModel.Store.Kit" Multiplicity="0..1" />
+          <End Role="KitEntry" Type="cposModel.Store.KitEntry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kit">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="KitEntry">
+              <PropertyRef Name="KitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RolePermissionMap_Permission">
+          <End Role="Permission" Type="cposModel.Store.Permission" Multiplicity="1" />
+          <End Role="RolePermissionMap" Type="cposModel.Store.RolePermissionMap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permission">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RolePermissionMap">
+              <PropertyRef Name="PermissionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RolePermissionMap_Role">
+          <End Role="Role" Type="cposModel.Store.Role" Multiplicity="1" />
+          <End Role="RolePermissionMap" Type="cposModel.Store.RolePermissionMap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RolePermissionMap">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupplierList_Item">
+          <End Role="Item" Type="cposModel.Store.Item" Multiplicity="1" />
+          <End Role="SupplierList" Type="cposModel.Store.SupplierList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SupplierList">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupplierList_Supplier">
+          <End Role="Supplier" Type="cposModel.Store.Supplier" Multiplicity="1" />
+          <End Role="SupplierList" Type="cposModel.Store.SupplierList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SupplierList">
+              <PropertyRef Name="SupplierID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transaction_Customer">
+          <End Role="Customer" Type="cposModel.Store.Customer" Multiplicity="0..1" />
+          <End Role="Transaction" Type="cposModel.Store.Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Transaction">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransactionDetail_Item">
+          <End Role="Item" Type="cposModel.Store.Item" Multiplicity="0..1" />
+          <End Role="TransactionDetail" Type="cposModel.Store.TransactionDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TransactionDetail">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransactionDetail_Transaction">
+          <End Role="Transaction" Type="cposModel.Store.Transaction" Multiplicity="0..1" />
+          <End Role="TransactionDetail" Type="cposModel.Store.TransactionDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transaction">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TransactionDetail">
+              <PropertyRef Name="TransactionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Employee">
+          <End Role="Employee" Type="cposModel.Store.Employee" Multiplicity="0..1" />
+          <End Role="User" Type="cposModel.Store.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="cposModel.Store.Role" Multiplicity="0..1" />
+          <End Role="User" Type="cposModel.Store.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="cposModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="CPosContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categories" EntityType="cposModel.Category" />
+          <EntitySet Name="Customers" EntityType="cposModel.Customer" />
+          <EntitySet Name="DailySales" EntityType="cposModel.DailySale" />
+          <EntitySet Name="Departments" EntityType="cposModel.Department" />
+          <EntitySet Name="Employees" EntityType="cposModel.Employee" />
+          <EntitySet Name="Items" EntityType="cposModel.Item" />
+          <EntitySet Name="Kits" EntityType="cposModel.Kit" />
+          <EntitySet Name="KitEntries" EntityType="cposModel.KitEntry" />
+          <EntitySet Name="Permissions" EntityType="cposModel.Permission" />
+          <EntitySet Name="Roles" EntityType="cposModel.Role" />
+          <EntitySet Name="Stores" EntityType="cposModel.Store" />
+          <EntitySet Name="Suppliers" EntityType="cposModel.Supplier" />
+          <EntitySet Name="SupplierLists" EntityType="cposModel.SupplierList" />
+          <EntitySet Name="Transactions" EntityType="cposModel.Transaction" />
+          <EntitySet Name="TransactionDetails" EntityType="cposModel.TransactionDetail" />
+          <EntitySet Name="Users" EntityType="cposModel.User" />
+          <AssociationSet Name="FK_Category_Department" Association="cposModel.FK_Category_Department">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="Category" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Category" Association="cposModel.FK_Item_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Item" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transaction_Customer" Association="cposModel.FK_Transaction_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Transaction" EntitySet="Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Department" Association="cposModel.FK_Item_Department">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="Item" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Employee" Association="cposModel.FK_User_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kit_Item" Association="cposModel.FK_Kit_Item">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="Kit" EntitySet="Kits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplierList_Item" Association="cposModel.FK_SupplierList_Item">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="SupplierList" EntitySet="SupplierLists" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransactionDetail_Item" Association="cposModel.FK_TransactionDetail_Item">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="TransactionDetail" EntitySet="TransactionDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KitEntry_Kit" Association="cposModel.FK_KitEntry_Kit">
+            <End Role="Kit" EntitySet="Kits" />
+            <End Role="KitEntry" EntitySet="KitEntries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="cposModel.FK_User_Role">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplierList_Supplier" Association="cposModel.FK_SupplierList_Supplier">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="SupplierList" EntitySet="SupplierLists" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransactionDetail_Transaction" Association="cposModel.FK_TransactionDetail_Transaction">
+            <End Role="Transaction" EntitySet="Transactions" />
+            <End Role="TransactionDetail" EntitySet="TransactionDetails" />
+          </AssociationSet>
+          <AssociationSet Name="RolePermissionMap" Association="cposModel.RolePermissionMap">
+            <End Role="Permission" EntitySet="Permissions" />
+            <End Role="Role" EntitySet="Roles" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="DepartmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedDate" Type="DateTime" />
+          <Property Name="LastUpdate" Type="DateTime" />
+          <Property Name="Active" Type="Boolean" />
+          <NavigationProperty Name="Department" Relationship="cposModel.FK_Category_Department" FromRole="Category" ToRole="Department" />
+          <NavigationProperty Name="Items" Relationship="cposModel.FK_Item_Category" FromRole="Category" ToRole="Item" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountNumber" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Company" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="EmailAddress" Type="String" MaxLength="130" Unicode="true" FixedLength="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="32" Unicode="true" FixedLength="false" />
+          <Property Name="FaxNumber" Type="String" MaxLength="32" Unicode="true" FixedLength="false" />
+          <Property Name="Address1" Type="String" MaxLength="65" Unicode="true" FixedLength="false" />
+          <Property Name="Address2" Type="String" MaxLength="65" Unicode="true" FixedLength="false" />
+          <Property Name="City" Type="String" MaxLength="65" Unicode="true" FixedLength="false" />
+          <Property Name="State" Type="String" MaxLength="65" Unicode="true" FixedLength="false" />
+          <Property Name="ZipCode" Type="String" MaxLength="16" Unicode="true" FixedLength="false" />
+          <Property Name="Country" Type="String" MaxLength="130" Unicode="true" FixedLength="false" />
+          <Property Name="PriceLevel" Type="Int16" />
+          <Property Name="Discount" Type="Double" />
+          <Property Name="CreditLimit" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="AccountBalance" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="TotalSales" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="AllowCredit" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" />
+          <Property Name="LastVisitDate" Type="DateTime" />
+          <NavigationProperty Name="Transactions" Relationship="cposModel.FK_Transaction_Customer" FromRole="Customer" ToRole="Transaction" />
+        </EntityType>
+        <EntityType Name="DailySale">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <Property Name="Total" Type="Decimal" Precision="12" Scale="2" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="CreatedDate" Type="DateTime" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="LastUpdated" Type="DateTime" />
+          <NavigationProperty Name="Categories" Relationship="cposModel.FK_Category_Department" FromRole="Department" ToRole="Category" />
+          <NavigationProperty Name="Items" Relationship="cposModel.FK_Item_Department" FromRole="Department" ToRole="Item" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedDate" Type="DateTime" />
+          <Property Name="LastUpdate" Type="DateTime" />
+          <NavigationProperty Name="Users" Relationship="cposModel.FK_User_Employee" FromRole="Employee" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="BuyPrice" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="SellPrice" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="Description" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="FoodStampable" Type="Boolean" />
+          <Property Name="DateCreated" Type="DateTime" />
+          <Property Name="DateUpdated" Type="DateTime" />
+          <Property Name="LastReceived" Type="DateTime" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="Barcode" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="Reference" Type="Int32" />
+          <Property Name="Weight" Type="Double" />
+          <Property Name="Weighed" Type="Boolean" Nullable="false" />
+          <Property Name="PrefferredSupplierID" Type="Int32" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="DepartmentID" Type="Int32" />
+          <Property Name="Discountable" Type="Boolean" />
+          <Property Name="SalePrice" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="DiscountPercent" Type="Double" />
+          <Property Name="SaleStartDate" Type="DateTime" />
+          <Property Name="SaleEndDate" Type="DateTime" />
+          <Property Name="OnSale" Type="Boolean" Nullable="false" />
+          <Property Name="TaxID" Type="Int32" />
+          <Property Name="Taxable" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Category" Relationship="cposModel.FK_Item_Category" FromRole="Item" ToRole="Category" />
+          <NavigationProperty Name="Department" Relationship="cposModel.FK_Item_Department" FromRole="Item" ToRole="Department" />
+          <NavigationProperty Name="Kits" Relationship="cposModel.FK_Kit_Item" FromRole="Item" ToRole="Kit" />
+          <NavigationProperty Name="SupplierLists" Relationship="cposModel.FK_SupplierList_Item" FromRole="Item" ToRole="SupplierList" />
+          <NavigationProperty Name="TransactionDetails" Relationship="cposModel.FK_TransactionDetail_Item" FromRole="Item" ToRole="TransactionDetail" />
+        </EntityType>
+        <EntityType Name="Kit">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemID" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Double" />
+          <Property Name="Price" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="Description" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="DateCreated" Type="DateTime" />
+          <Property Name="LastUpdated" Type="DateTime" />
+          <NavigationProperty Name="Item" Relationship="cposModel.FK_Kit_Item" FromRole="Kit" ToRole="Item" />
+          <NavigationProperty Name="KitEntries" Relationship="cposModel.FK_KitEntry_Kit" FromRole="Kit" ToRole="KitEntry" />
+        </EntityType>
+        <EntityType Name="KitEntry">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KitID" Type="Int32" />
+          <Property Name="Cost" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="Price" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="CreatedDate" Type="DateTime" />
+          <Property Name="Quantity" Type="Double" />
+          <NavigationProperty Name="Kit" Relationship="cposModel.FK_KitEntry_Kit" FromRole="KitEntry" ToRole="Kit" />
+        </EntityType>
+        <EntityType Name="Permission">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Roles" Relationship="cposModel.RolePermissionMap" FromRole="Permission" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Permission" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Users" Relationship="cposModel.FK_User_Role" FromRole="Role" ToRole="User" />
+          <NavigationProperty Name="Permissions" Relationship="cposModel.RolePermissionMap" FromRole="Role" ToRole="Permission" />
+        </EntityType>
+        <EntityType Name="Store">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StoreNumber" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="130" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Address1" Type="String" Nullable="false" MaxLength="130" Unicode="true" FixedLength="false" />
+          <Property Name="Address2" Type="String" Nullable="false" MaxLength="130" Unicode="true" FixedLength="false" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="65" Unicode="true" FixedLength="false" />
+          <Property Name="State" Type="String" MaxLength="65" Unicode="true" FixedLength="false" />
+          <Property Name="ZipCode" Type="String" Nullable="false" MaxLength="16" Unicode="true" FixedLength="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" />
+          <Property Name="LastUpdates" Type="DateTime" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="32" Unicode="true" FixedLength="false" />
+          <Property Name="EmailAddress" Type="String" MaxLength="130" Unicode="true" FixedLength="false" />
+          <Property Name="WebPage" Type="String" MaxLength="130" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="65" Unicode="true" FixedLength="false" />
+          <Property Name="State" Type="String" MaxLength="65" Unicode="true" FixedLength="false" />
+          <Property Name="Address1" Type="String" Nullable="false" MaxLength="65" Unicode="true" FixedLength="false" />
+          <Property Name="Address2" Type="String" Nullable="false" MaxLength="65" Unicode="true" FixedLength="false" />
+          <Property Name="ZipCode" Type="String" Nullable="false" MaxLength="16" Unicode="true" FixedLength="false" />
+          <Property Name="EmailAddress" Type="String" MaxLength="130" Unicode="true" FixedLength="false" />
+          <Property Name="WebPageAddress" Type="String" MaxLength="130" Unicode="true" FixedLength="false" />
+          <Property Name="SupplierCode" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Country" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" />
+          <Property Name="TaxNumber" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="32" Unicode="true" FixedLength="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="CompanyName" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="FaxNumber" Type="String" Nullable="false" MaxLength="32" Unicode="true" FixedLength="false" />
+          <Property Name="Notes" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="MinimumOrderAmmount" Type="Decimal" Nullable="false" Precision="12" Scale="2" />
+          <NavigationProperty Name="SupplierLists" Relationship="cposModel.FK_SupplierList_Supplier" FromRole="Supplier" ToRole="SupplierList" />
+        </EntityType>
+        <EntityType Name="SupplierList">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SupplierID" Type="Int32" Nullable="false" />
+          <Property Name="ItemID" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" />
+          <Property Name="LastUpdate" Type="DateTime" />
+          <NavigationProperty Name="Item" Relationship="cposModel.FK_SupplierList_Item" FromRole="SupplierList" ToRole="Item" />
+          <NavigationProperty Name="Supplier" Relationship="cposModel.FK_SupplierList_Supplier" FromRole="SupplierList" ToRole="Supplier" />
+        </EntityType>
+        <EntityType Name="Transaction">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="Total" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="SalesTax" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="EmployeeID" Type="Int32" />
+          <Property Name="Notes" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="CreatedTime" Type="DateTime" />
+          <NavigationProperty Name="Customer" Relationship="cposModel.FK_Transaction_Customer" FromRole="Transaction" ToRole="Customer" />
+          <NavigationProperty Name="TransactionDetails" Relationship="cposModel.FK_TransactionDetail_Transaction" FromRole="Transaction" ToRole="TransactionDetail" />
+        </EntityType>
+        <EntityType Name="TransactionDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Cost" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="SalePrice" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="TransactionID" Type="Int32" />
+          <Property Name="ItemID" Type="Int32" />
+          <Property Name="Quantity" Type="Double" />
+          <Property Name="Taxable" Type="Boolean" />
+          <Property Name="SalesTax" Type="Decimal" Precision="12" Scale="2" />
+          <NavigationProperty Name="Item" Relationship="cposModel.FK_TransactionDetail_Item" FromRole="TransactionDetail" ToRole="Item" />
+          <NavigationProperty Name="Transaction" Relationship="cposModel.FK_TransactionDetail_Transaction" FromRole="TransactionDetail" ToRole="Transaction" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeID" Type="Int32" />
+          <Property Name="FirstName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Password" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="LastLogin" Type="DateTime" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="EmailAddress" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="City" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="State" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Telephone" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="PasswordReset" Type="Boolean" />
+          <Property Name="Address1" Type="String" MaxLength="130" Unicode="true" FixedLength="false" />
+          <Property Name="Address2" Type="String" MaxLength="130" Unicode="true" FixedLength="false" />
+          <Property Name="RoleID" Type="Int32" />
+          <NavigationProperty Name="Employee" Relationship="cposModel.FK_User_Employee" FromRole="User" ToRole="Employee" />
+          <NavigationProperty Name="Role" Relationship="cposModel.FK_User_Role" FromRole="User" ToRole="Role" />
+        </EntityType>
+        <Association Name="FK_Category_Department">
+          <End Role="Department" Type="cposModel.Department" Multiplicity="1" />
+          <End Role="Category" Type="cposModel.Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Category">
+              <PropertyRef Name="DepartmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Category">
+          <End Role="Category" Type="cposModel.Category" Multiplicity="1" />
+          <End Role="Item" Type="cposModel.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transaction_Customer">
+          <End Role="Customer" Type="cposModel.Customer" Multiplicity="0..1" />
+          <End Role="Transaction" Type="cposModel.Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Transaction">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Department">
+          <End Role="Department" Type="cposModel.Department" Multiplicity="0..1" />
+          <End Role="Item" Type="cposModel.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="DepartmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Employee">
+          <End Role="Employee" Type="cposModel.Employee" Multiplicity="0..1" />
+          <End Role="User" Type="cposModel.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kit_Item">
+          <End Role="Item" Type="cposModel.Item" Multiplicity="1" />
+          <End Role="Kit" Type="cposModel.Kit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Kit">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupplierList_Item">
+          <End Role="Item" Type="cposModel.Item" Multiplicity="1" />
+          <End Role="SupplierList" Type="cposModel.SupplierList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SupplierList">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransactionDetail_Item">
+          <End Role="Item" Type="cposModel.Item" Multiplicity="0..1" />
+          <End Role="TransactionDetail" Type="cposModel.TransactionDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TransactionDetail">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KitEntry_Kit">
+          <End Role="Kit" Type="cposModel.Kit" Multiplicity="0..1" />
+          <End Role="KitEntry" Type="cposModel.KitEntry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kit">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="KitEntry">
+              <PropertyRef Name="KitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="cposModel.Role" Multiplicity="0..1" />
+          <End Role="User" Type="cposModel.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupplierList_Supplier">
+          <End Role="Supplier" Type="cposModel.Supplier" Multiplicity="1" />
+          <End Role="SupplierList" Type="cposModel.SupplierList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SupplierList">
+              <PropertyRef Name="SupplierID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransactionDetail_Transaction">
+          <End Role="Transaction" Type="cposModel.Transaction" Multiplicity="0..1" />
+          <End Role="TransactionDetail" Type="cposModel.TransactionDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transaction">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TransactionDetail">
+              <PropertyRef Name="TransactionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RolePermissionMap">
+          <End Role="Permission" Type="cposModel.Permission" Multiplicity="*" />
+          <End Role="Role" Type="cposModel.Role" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="cposModelStoreContainer" CdmEntityContainer="CPosContext">
+          <EntitySetMapping Name="Categories"><EntityTypeMapping TypeName="cposModel.Category"><MappingFragment StoreEntitySet="Category">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+            <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+            <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+            <ScalarProperty Name="Active" ColumnName="Active" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Customers"><EntityTypeMapping TypeName="cposModel.Customer"><MappingFragment StoreEntitySet="Customer">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+            <ScalarProperty Name="Title" ColumnName="Title" />
+            <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+            <ScalarProperty Name="LastName" ColumnName="LastName" />
+            <ScalarProperty Name="Company" ColumnName="Company" />
+            <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+            <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+            <ScalarProperty Name="FaxNumber" ColumnName="FaxNumber" />
+            <ScalarProperty Name="Address1" ColumnName="Address1" />
+            <ScalarProperty Name="Address2" ColumnName="Address2" />
+            <ScalarProperty Name="City" ColumnName="City" />
+            <ScalarProperty Name="State" ColumnName="State" />
+            <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+            <ScalarProperty Name="Country" ColumnName="Country" />
+            <ScalarProperty Name="PriceLevel" ColumnName="PriceLevel" />
+            <ScalarProperty Name="Discount" ColumnName="Discount" />
+            <ScalarProperty Name="CreditLimit" ColumnName="CreditLimit" />
+            <ScalarProperty Name="AccountBalance" ColumnName="AccountBalance" />
+            <ScalarProperty Name="TotalSales" ColumnName="TotalSales" />
+            <ScalarProperty Name="AllowCredit" ColumnName="AllowCredit" />
+            <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+            <ScalarProperty Name="LastVisitDate" ColumnName="LastVisitDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="DailySales"><EntityTypeMapping TypeName="cposModel.DailySale"><MappingFragment StoreEntitySet="DailySales">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Date" ColumnName="Date" />
+            <ScalarProperty Name="Total" ColumnName="Total" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Departments"><EntityTypeMapping TypeName="cposModel.Department"><MappingFragment StoreEntitySet="Department">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+            <ScalarProperty Name="Active" ColumnName="Active" />
+            <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Employees"><EntityTypeMapping TypeName="cposModel.Employee"><MappingFragment StoreEntitySet="Employee">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+            <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Items"><EntityTypeMapping TypeName="cposModel.Item"><MappingFragment StoreEntitySet="Item">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="BuyPrice" ColumnName="BuyPrice" />
+            <ScalarProperty Name="SellPrice" ColumnName="SellPrice" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="FoodStampable" ColumnName="FoodStampable" />
+            <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+            <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+            <ScalarProperty Name="LastReceived" ColumnName="LastReceived" />
+            <ScalarProperty Name="Image" ColumnName="Image" />
+            <ScalarProperty Name="Active" ColumnName="Active" />
+            <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+            <ScalarProperty Name="Reference" ColumnName="Reference" />
+            <ScalarProperty Name="Weight" ColumnName="Weight" />
+            <ScalarProperty Name="Weighed" ColumnName="Weighed" />
+            <ScalarProperty Name="PrefferredSupplierID" ColumnName="PrefferredSupplierID" />
+            <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+            <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+            <ScalarProperty Name="Discountable" ColumnName="Discountable" />
+            <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+            <ScalarProperty Name="DiscountPercent" ColumnName="DiscountPercent" />
+            <ScalarProperty Name="SaleStartDate" ColumnName="SaleStartDate" />
+            <ScalarProperty Name="SaleEndDate" ColumnName="SaleEndDate" />
+            <ScalarProperty Name="OnSale" ColumnName="OnSale" />
+            <ScalarProperty Name="TaxID" ColumnName="TaxID" />
+            <ScalarProperty Name="Taxable" ColumnName="Taxable" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Kits"><EntityTypeMapping TypeName="cposModel.Kit"><MappingFragment StoreEntitySet="Kit">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+            <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+            <ScalarProperty Name="Price" ColumnName="Price" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+            <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="KitEntries"><EntityTypeMapping TypeName="cposModel.KitEntry"><MappingFragment StoreEntitySet="KitEntry">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="KitID" ColumnName="KitID" />
+            <ScalarProperty Name="Cost" ColumnName="Cost" />
+            <ScalarProperty Name="Price" ColumnName="Price" />
+            <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+            <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Permissions"><EntityTypeMapping TypeName="cposModel.Permission"><MappingFragment StoreEntitySet="Permission">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="Value" ColumnName="Value" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Roles"><EntityTypeMapping TypeName="cposModel.Role"><MappingFragment StoreEntitySet="Role">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="Permission" ColumnName="Permission" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Stores"><EntityTypeMapping TypeName="cposModel.Store"><MappingFragment StoreEntitySet="Store">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="StoreNumber" ColumnName="StoreNumber" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="Address1" ColumnName="Address1" />
+            <ScalarProperty Name="Address2" ColumnName="Address2" />
+            <ScalarProperty Name="City" ColumnName="City" />
+            <ScalarProperty Name="State" ColumnName="State" />
+            <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+            <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+            <ScalarProperty Name="LastUpdates" ColumnName="LastUpdates" />
+            <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+            <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+            <ScalarProperty Name="WebPage" ColumnName="WebPage" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Suppliers"><EntityTypeMapping TypeName="cposModel.Supplier"><MappingFragment StoreEntitySet="Supplier">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+            <ScalarProperty Name="LastName" ColumnName="LastName" />
+            <ScalarProperty Name="City" ColumnName="City" />
+            <ScalarProperty Name="State" ColumnName="State" />
+            <ScalarProperty Name="Address1" ColumnName="Address1" />
+            <ScalarProperty Name="Address2" ColumnName="Address2" />
+            <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+            <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+            <ScalarProperty Name="WebPageAddress" ColumnName="WebPageAddress" />
+            <ScalarProperty Name="SupplierCode" ColumnName="SupplierCode" />
+            <ScalarProperty Name="Country" ColumnName="Country" />
+            <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+            <ScalarProperty Name="TaxNumber" ColumnName="TaxNumber" />
+            <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+            <ScalarProperty Name="Active" ColumnName="Active" />
+            <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+            <ScalarProperty Name="FaxNumber" ColumnName="FaxNumber" />
+            <ScalarProperty Name="Notes" ColumnName="Notes" />
+            <ScalarProperty Name="MinimumOrderAmmount" ColumnName="MinimumOrderAmmount" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="SupplierLists"><EntityTypeMapping TypeName="cposModel.SupplierList"><MappingFragment StoreEntitySet="SupplierList">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+            <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+            <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+            <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Transactions"><EntityTypeMapping TypeName="cposModel.Transaction"><MappingFragment StoreEntitySet="Transaction">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+            <ScalarProperty Name="Total" ColumnName="Total" />
+            <ScalarProperty Name="SalesTax" ColumnName="SalesTax" />
+            <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+            <ScalarProperty Name="Notes" ColumnName="Notes" />
+            <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TransactionDetails"><EntityTypeMapping TypeName="cposModel.TransactionDetail"><MappingFragment StoreEntitySet="TransactionDetail">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Cost" ColumnName="Cost" />
+            <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+            <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+            <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+            <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+            <ScalarProperty Name="Taxable" ColumnName="Taxable" />
+            <ScalarProperty Name="SalesTax" ColumnName="SalesTax" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Users"><EntityTypeMapping TypeName="cposModel.User"><MappingFragment StoreEntitySet="User">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+            <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+            <ScalarProperty Name="LastName" ColumnName="LastName" />
+            <ScalarProperty Name="UserName" ColumnName="UserName" />
+            <ScalarProperty Name="Password" ColumnName="Password" />
+            <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
+            <ScalarProperty Name="Active" ColumnName="Active" />
+            <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+            <ScalarProperty Name="City" ColumnName="City" />
+            <ScalarProperty Name="State" ColumnName="State" />
+            <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+            <ScalarProperty Name="PasswordReset" ColumnName="PasswordReset" />
+            <ScalarProperty Name="Address1" ColumnName="Address1" />
+            <ScalarProperty Name="Address2" ColumnName="Address2" />
+            <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <AssociationSetMapping Name="RolePermissionMap" TypeName="cposModel.RolePermissionMap" StoreEntitySet="RolePermissionMap">
+            <EndProperty Name="Permission">
+              <ScalarProperty Name="ID" ColumnName="PermissionID" />
+            </EndProperty>
+            <EndProperty Name="Role">
+              <ScalarProperty Name="ID" ColumnName="RoleID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model1">
+        <EntityTypeShape EntityType="cposModel.Category" Width="1.5" PointX="3" PointY="4.375" Height="2.4140429687499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="cposModel.Customer" Width="1.5" PointX="3" PointY="15.125" Height="4.8792529296875014" IsExpanded="true" />
+        <EntityTypeShape EntityType="cposModel.DailySale" Width="1.5" PointX="0.75" PointY="0.75" Height="1.4279589843749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="cposModel.Department" Width="1.5" PointX="0.75" PointY="4.375" Height="2.2496956380208335" IsExpanded="true" />
+        <EntityTypeShape EntityType="cposModel.Employee" Width="1.5" PointX="12" PointY="6.125" Height="1.5923063151041674" IsExpanded="true" />
+        <EntityTypeShape EntityType="cposModel.Item" Width="1.5" PointX="5.25" PointY="2.5" Height="6.0296842447916674" IsExpanded="true" />
+        <EntityTypeShape EntityType="cposModel.Kit" Width="1.5" PointX="7.5" PointY="4.375" Height="2.4140429687499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="cposModel.KitEntry" Width="1.5" PointX="9.75" PointY="4.5" Height="2.0853483072916674" IsExpanded="true" />
+        <EntityTypeShape EntityType="cposModel.Permission" Width="1.5" PointX="9.75" PointY="9.125" Height="1.7566536458333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="cposModel.Role" Width="1.5" PointX="12" PointY="9" Height="1.9210009765624996" IsExpanded="true" />
+        <EntityTypeShape EntityType="cposModel.Store" Width="1.5" PointX="0.75" PointY="7.75" Height="3.2357796223958317" IsExpanded="true" />
+        <EntityTypeShape EntityType="cposModel.Supplier" Width="1.5" PointX="5.25" PointY="9.625" Height="4.3862109375000031" IsExpanded="true" />
+        <EntityTypeShape EntityType="cposModel.SupplierList" Width="1.5" PointX="7.5" PointY="1.5" Height="2.0853483072916674" IsExpanded="true" />
+        <EntityTypeShape EntityType="cposModel.Transaction" Width="1.5" PointX="5.25" PointY="16.375" Height="2.414042968749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="cposModel.TransactionDetail" Width="1.5" PointX="7.5" PointY="8.25" Height="2.5783902994791674" IsExpanded="true" />
+        <EntityTypeShape EntityType="cposModel.User" Width="1.5" PointX="14.25" PointY="8" Height="3.893168945312496" IsExpanded="true" />
+        <AssociationConnector Association="cposModel.FK_Category_Department" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="5.4998478190104167" />
+          <ConnectorPoint PointX="3" PointY="5.4998478190104167" />
+        </AssociationConnector>
+        <AssociationConnector Association="cposModel.FK_Item_Category" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="5.582021484375" />
+          <ConnectorPoint PointX="5.25" PointY="5.582021484375" />
+        </AssociationConnector>
+        <AssociationConnector Association="cposModel.FK_Transaction_Customer" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="17.582021484374998" />
+          <ConnectorPoint PointX="5.25" PointY="17.582021484374998" />
+        </AssociationConnector>
+        <AssociationConnector Association="cposModel.FK_Item_Department" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.5" PointY="4.375" />
+          <ConnectorPoint PointX="1.5" PointY="3.4374995" />
+          <ConnectorPoint PointX="5.25" PointY="3.4374995" />
+        </AssociationConnector>
+        <AssociationConnector Association="cposModel.FK_User_Employee" ManuallyRouted="false">
+          <ConnectorPoint PointX="13.5" PointY="6.9211531575520837" />
+          <ConnectorPoint PointX="15" PointY="6.9211531575520837" />
+          <ConnectorPoint PointX="15" PointY="8" />
+        </AssociationConnector>
+        <AssociationConnector Association="cposModel.FK_Kit_Item" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="5.582021484375" />
+          <ConnectorPoint PointX="7.229166666666667" PointY="5.5820214843749989" />
+          <ConnectorPoint PointX="7.395833333333333" PointY="5.582021484375" />
+          <ConnectorPoint PointX="7.5" PointY="5.582021484375" />
+        </AssociationConnector>
+        <AssociationConnector Association="cposModel.FK_SupplierList_Item" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="3.0426741536458337" />
+          <ConnectorPoint PointX="7.229166666666667" PointY="3.0426741536458333" />
+          <ConnectorPoint PointX="7.395833333333333" PointY="3.0426741536458337" />
+          <ConnectorPoint PointX="7.5" PointY="3.0426741536458337" />
+        </AssociationConnector>
+        <AssociationConnector Association="cposModel.FK_TransactionDetail_Item" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="8.5296842447916674" />
+          <ConnectorPoint PointX="7.125" PointY="8.9046842447916674" />
+          <ConnectorPoint PointX="7.125" PointY="7.8738471538461541" />
+          <ConnectorPoint PointX="7.2535744349011217" PointY="8.0024215887472732" />
+          <ConnectorPoint PointX="7.3714255650988791" PointY="8.1202727189450314" />
+          <ConnectorPoint PointX="7.5011528461538459" PointY="8.25" />
+        </AssociationConnector>
+        <AssociationConnector Association="cposModel.FK_KitEntry_Kit" ManuallyRouted="false">
+          <ConnectorPoint PointX="9" PointY="5.5426741536458337" />
+          <ConnectorPoint PointX="9.75" PointY="5.5426741536458337" />
+        </AssociationConnector>
+        <AssociationConnector Association="cposModel.FK_User_Role" ManuallyRouted="false">
+          <ConnectorPoint PointX="13.5" PointY="9.96050048828125" />
+          <ConnectorPoint PointX="14.25" PointY="9.96050048828125" />
+        </AssociationConnector>
+        <AssociationConnector Association="cposModel.FK_SupplierList_Supplier" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="9.68846053846154" />
+          <ConnectorPoint PointX="7.3125" PointY="9.1259605384615412" />
+          <ConnectorPoint PointX="7.3125" PointY="2.2400850768229161" />
+          <ConnectorPoint PointX="7.5" PointY="2.2400850768229161" />
+        </AssociationConnector>
+        <AssociationConnector Association="cposModel.FK_TransactionDetail_Transaction" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="17.582021484374998" />
+          <ConnectorPoint PointX="8.25" PointY="17.582021484374998" />
+          <ConnectorPoint PointX="8.25" PointY="10.828390299479167" />
+        </AssociationConnector>
+        <AssociationConnector Association="cposModel.RolePermissionMap" ManuallyRouted="false">
+          <ConnectorPoint PointX="11.25" PointY="10.003326822916666" />
+          <ConnectorPoint PointX="12" PointY="10.003326822916666" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
